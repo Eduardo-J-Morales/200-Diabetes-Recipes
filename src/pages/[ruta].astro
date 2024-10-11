@@ -1,0 +1,64 @@
+---
+import Navegacion from './index.astro' 
+import {alimentos} from '../components/alimentos.js'
+
+export async function getStaticPaths({params}) {
+  
+    return alimentos.map((alimento) => (
+        { params: { ruta: alimento.alimento } })
+    
+    );
+}
+
+const {ruta}=Astro.params;
+---
+<Navegacion></Navegacion>
+
+{
+    
+    alimentos
+    .filter(alimento => alimento.alimento ===ruta)
+    .map(alimento => (
+        <div>
+        <h1>{alimento.alimento}</h1>
+        <p> {alimento.explicacion}</p>
+        <div>Carbohidratos: {alimento.carbohidratos}</div>
+        <div>Indice Glucemico: {alimento.indiceGlucemico}</div>
+        <div>Fibra: {alimento.fibra}</div>
+        </div>
+    ))
+
+}
+
+
+<style>
+
+
+    div{
+        display:grid;
+        grid-template: 100%/0% ;
+        grid-gap: 1rem;
+        text-align:center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    p{
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    span{
+        display:block;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+}
+
+</style>

@@ -1,9 +1,39 @@
 ---
-import Content from '../components/Content.svelte'
+import {alimentos} from '../components/alimentos.js'
+
 ---
 
-<Content>
-  <div slot="header">Ejemplo de Header</div>
-  <div slot="content">Ejemplo de Content</div>
-  <div slot="footer">Ejemplo de Footer</div>
-</Content>
+<div class="cont">
+    {alimentos.map((alimento) => (
+        <a href={`/${alimento.alimento}`}>{alimento.alimento}</a>
+    ))}
+</div>
+
+
+
+
+<style>
+    .cont {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.cont a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size:0.8rem;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cont a:hover {
+    background-color: #e0e0e0;
+}
+    
+</style>
