@@ -2,11 +2,8 @@
 import Content from '../components/Content.svelte'
 ---
 
-<div class="content">
-    <Content client:load></Content>
-</div> 
-<style>
-    .container {
-        display: flex;
-    }
-</style>
+<Content>
+  <div slot="header">Ejemplo de Header</div>
+  <div slot="content">Ejemplo de Content</div>
+  <div slot="footer">Ejemplo de Footer</div>
+</Content>
