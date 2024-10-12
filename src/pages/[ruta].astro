@@ -19,13 +19,24 @@ const {ruta}=Astro.params;
     alimentos
     .filter(alimento => alimento.alimento ===ruta)
     .map(alimento => (
-        <div>
         <h1>{alimento.alimento}</h1>
+        <div class="contenedor">
+
         <p> {alimento.explicacion}</p>
-        <div>Carbohidratos: {alimento.carbohidratos}</div>
-        <div>Indice Glucemico: {alimento.indiceGlucemico}</div>
-        <div>Fibra: {alimento.fibra}</div>
+            <div>
+                <span>
+        Carbohidratos: {alimento.carbohidratos}
+                    </span>
+                    <span>
+        Indice Glucemico: {alimento.indiceGlucemico}
+                        </span>
+                        <span>
+        Fibra: {alimento.fibra}
+
+                        </span>
         </div>
+       
+       </div>
     ))
 
 }
@@ -33,15 +44,15 @@ const {ruta}=Astro.params;
 
 <style>
 
+.contenedor{
+    border: solid 1px black;
+    padding: 20px;
+    margin: 20px;
+    display:grid;
+    grid-template-columns: 50% 30%;
+}
 
-    div{
-        display:grid;
-        grid-template: 100%/0% ;
-        grid-gap: 1rem;
-        text-align:center;
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-    }
+
 
 h1 {
         text-align: center;
@@ -57,6 +68,7 @@ h1 {
 
     span{
         display:block;
+        text-align:end;
         font-size: 1.5rem;
         margin-bottom: 1rem;
 }
